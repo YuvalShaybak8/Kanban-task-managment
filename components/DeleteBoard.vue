@@ -3,7 +3,7 @@
     :open="modelValue"
     @update:open="$emit('update:modelValue', $event)"
   >
-    <UiDialogContent class="sm:max-w-[480px]">
+    <UiDialogContent class="sm:max-w-[480px] dark:bg-card">
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold text-delete_button"
           >Delete Board</UiDialogTitle

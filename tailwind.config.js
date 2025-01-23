@@ -48,6 +48,10 @@ module.exports = {
           DEFAULT: "hsl(var(--column-gray))",
           foreground: "hsl(var(--column-gray-foreground))",
         },
+        newcolumn: {
+          DEFAULT: "hsl(var(--newcolumn))",
+          foreground: "hsl(var(--newcolumn-foreground))",
+        },
         arrow_color: {
           DEFAULT: "hsl(var(--arrow-color))",
           foreground: "hsl(var(--arrow-color-foreground))",

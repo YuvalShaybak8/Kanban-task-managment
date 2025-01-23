@@ -24,7 +24,7 @@
               <UiDropdownMenuTrigger
                 class="opacity-0 group-hover:opacity-100 ms-auto transition-opacity data-[state=open]:opacity-100"
               >
-                <Ellipsis class="text-gray hover:text-gray-700 size-7" />
+                <Ellipsis class="text-gray hover:text-gray-500 size-7" />
               </UiDropdownMenuTrigger>
 
               <UiDropdownMenuContent

@@ -15,18 +15,24 @@
 
       <form @submit.prevent="updateColumn" class="space-y-6">
         <div class="space-y-2">
-          <UiLabel class="text-[12px] font-bold text-black">Name</UiLabel>
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
+            >Name</UiLabel
+          >
           <UiInput
             v-model="columnData.name"
             placeholder="Column Name"
-            class="w-full text-[13px] bg-card"
+            class="w-full text-[13px] bg-card dark:border-gray-700"
           />
         </div>
 
         <div class="space-y-2">
-          <UiLabel class="text-[12px] font-bold text-black">Color</UiLabel>
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
+            >Color</UiLabel
+          >
           <UiSelect v-model="columnData.label">
-            <UiSelectTrigger class="w-full text-[13px] bg-card">
+            <UiSelectTrigger
+              class="w-full text-[13px] bg-card dark:border-gray-700"
+            >
               <UiSelectValue>
                 <div class="flex items-center gap-3">
                   <div
@@ -37,7 +43,7 @@
                 </div>
               </UiSelectValue>
             </UiSelectTrigger>
-            <UiSelectContent class="bg-white">
+            <UiSelectContent class="bg-white dark:bg-background">
               <div class="max-h-[300px] overflow-y-auto">
                 <UiSelectItem
                   v-for="color in columnColors"

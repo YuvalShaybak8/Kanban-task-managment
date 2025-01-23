@@ -3,7 +3,7 @@
     :open="modelValue"
     @update:open="$emit('update:modelValue', $event)"
   >
-    <UiDialogContent class="sm:max-w-[480px]">
+    <UiDialogContent class="sm:max-w-[480px] dark:bg-card">
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold">Edit Board</UiDialogTitle>
         <UiDialogClose
@@ -19,7 +19,7 @@
           <UiInput
             v-model="boardName"
             placeholder="e.g. Web Design"
-            class="w-full text-[13px]"
+            class="w-full text-[13px] dark:border-gray-700 dark:bg-card"
           />
         </div>
 

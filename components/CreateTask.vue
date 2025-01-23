@@ -18,27 +18,31 @@
 
       <form @submit.prevent="createTask" class="space-y-6">
         <div class="space-y-2">
-          <UiLabel class="text-[12px] font-bold text-black">Task Name</UiLabel>
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
+            >Task Name</UiLabel
+          >
           <UiInput
             v-model="taskData.title"
             placeholder="Take title"
-            class="w-full text-[13px] bg-card"
+            class="w-full text-[13px] bg-card dark:border-gray-700"
           />
         </div>
 
         <div class="space-y-2">
-          <UiLabel class="text-[12px] font-bold text-black"
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
             >Description</UiLabel
           >
           <UiTextarea
             v-model="taskData.description"
             placeholder="Take Description"
-            class="min-h-[112px] w-full resize-none text-[13px] bg-card"
+            class="min-h-[112px] w-full resize-none text-[13px] bg-card dark:border-gray-700"
           />
         </div>
 
         <div class="space-y-3">
-          <UiLabel class="text-[12px] font-bold text-black">Subtasks</UiLabel>
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
+            >Subtasks</UiLabel
+          >
           <div
             v-if="taskData.subtasks.length === 0"
             class="text-[13px] text-gray text-center py-2"
@@ -53,7 +57,7 @@
             >
               <UiInput
                 v-model="subtask.title"
-                class="flex-1 text-[13px] bg-card"
+                class="flex-1 text-[13px] bg-card dark:border-gray-700"
                 placeholder="Subtask Title"
               />
               <button
@@ -75,9 +79,13 @@
         </div>
 
         <div class="space-y-2">
-          <UiLabel class="text-[12px] font-bold text-black">Status</UiLabel>
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
+            >Status</UiLabel
+          >
           <UiSelect v-model="taskData.status">
-            <UiSelectTrigger class="w-full text-[13px] bg-card">
+            <UiSelectTrigger
+              class="w-full text-[13px] bg-card dark:border-gray-700"
+            >
               <UiSelectValue :placeholder="placeholderText">
                 <div v-if="taskData.status" class="flex items-center gap-3">
                   <div
@@ -116,7 +124,7 @@
           type="submit"
           class="w-full rounded-full bg-purple hover:bg-purple/90 text-white text-[13px]"
         >
-          Create Task
+          Add
         </UiButton>
       </form>
     </UiDialogContent>

@@ -3,7 +3,7 @@
     :open="modelValue"
     @update:open="$emit('update:modelValue', $event)"
   >
-    <UiDialogContent class="sm:max-w-[480px] bg-card">
+    <UiDialogContent class="sm:max-w-[480px] bg-card dark:bg-card">
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold text-delete_button">
           Delete this column?
@@ -30,7 +30,7 @@
         </UiButton>
         <UiButton
           type="button"
-          class="rounded-full bg-background hover:bg-background/50 text-button_modal text-[13px] w-[calc(50%-10px)] px-6"
+          class="rounded-full bg-gray/10 hover:bg-gray/20 text-button_modal text-[13px] w-[calc(50%-10px)] px-6"
           @click="$emit('update:modelValue', false)"
         >
           Cancel

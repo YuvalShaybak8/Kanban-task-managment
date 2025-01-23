@@ -8,7 +8,7 @@
         + Create New Board
       </span>
     </UiDialogTrigger>
-    <UiDialogContent class="sm:max-w-[480px]">
+    <UiDialogContent class="sm:max-w-[480px] dark:bg-card">
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold">Add new board</UiDialogTitle>
         <UiDialogClose
@@ -24,7 +24,7 @@
           <UiInput
             v-model="boardName"
             placeholder="e.g. Web Design"
-            class="w-full text-[13px]"
+            class="w-full text-[13px] dark:bg-card dark:border-gray-700"
           />
         </div>
 

@@ -38,7 +38,7 @@
         </p>
 
         <div class="space-y-3">
-          <h3 class="text-[12px] font-bold text-black">
+          <h3 class="text-[12px] font-bold text-black dark:text-white">
             Subtasks ({{ completedSubtasks }} of {{ task.subtasks.length }})
           </h3>
           <div class="space-y-2">
@@ -77,12 +77,16 @@
         </div>
 
         <div class="space-y-2">
-          <h3 class="text-[12px] font-bold text-black">Current Status</h3>
+          <h3 class="text-[12px] font-bold text-black dark:text-white">
+            Current Status
+          </h3>
           <UiSelect
             v-model="currentStatus"
             @update:modelValue="updateTaskStatus"
           >
-            <UiSelectTrigger class="w-full text-[13px] bg-card">
+            <UiSelectTrigger
+              class="w-full text-[13px] bg-card dark:border-gray-700"
+            >
               <UiSelectValue>
                 <div class="flex items-center gap-3">
                   <div
@@ -95,7 +99,7 @@
                 </div>
               </UiSelectValue>
             </UiSelectTrigger>
-            <UiSelectContent class="bg-white">
+            <UiSelectContent class="bg-white dark:bg-background">
               <UiSelectItem
                 v-for="column in columns"
                 :key="column.name"

@@ -94,7 +94,7 @@
     <UiSidebarTrigger
       v-show="isCollapsed"
       @click="toggleSidebar"
-      class="fixed -left-2 bottom-8 bg-purple hover:bg-purple/90 text-white py-3 w-[64px] rounded-r-3xl h-[45px] flex items-center justify-center z-30 transition-all duration-300 ease-in-out opacity-0"
+      class="fixed -left-2 bottom-8 bg-purple hover:bg-purple/90 text-white py-3 w-[64px] rounded-r-3xl h-[45px] flex items-center justify-center z-30 transition-all duration-200 ease-in-out opacity-0"
       :class="[
         isCollapsed
           ? 'opacity-100 translate-x-0'

@@ -7,7 +7,7 @@
         ></h3>
         <UiButton
           variant="ghost"
-          class="hover:bg-column_gray hover:text-gray w-full h-[calc(100%-40px)] bg-column_gray hover:opacity-80 rounded-lg flex items-center justify-center text-gray font-bold text-[24px]"
+          class="hover:bg-column_gray dark:bg-newcolumn hover:text-gray w-full h-[calc(100%-40px)] bg-column_gray hover:opacity-80 rounded-lg flex items-center justify-center text-gray font-bold text-[24px]"
         >
           + New Column
         </UiButton>

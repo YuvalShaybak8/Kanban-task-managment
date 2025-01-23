@@ -10,27 +10,31 @@
 
       <form @submit.prevent="updateTask" class="space-y-6">
         <div class="space-y-2">
-          <UiLabel class="text-[12px] font-bold text-black">Title</UiLabel>
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
+            >Title</UiLabel
+          >
           <UiInput
             v-model="taskData.title"
             placeholder="Task title"
-            class="w-full text-[13px] bg-card"
+            class="w-full text-[13px] bg-card dark:border-gray-700"
           />
         </div>
 
         <div class="space-y-2">
-          <UiLabel class="text-[12px] font-bold text-black"
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
             >Description</UiLabel
           >
           <UiTextarea
             v-model="taskData.description"
             placeholder="Task Description"
-            class="min-h-[112px] w-full resize-none text-[13px] bg-card"
+            class="min-h-[112px] w-full resize-none text-[13px] bg-card dark:border-gray-700"
           />
         </div>
 
         <div class="space-y-3">
-          <UiLabel class="text-[12px] font-bold text-black">Subtasks</UiLabel>
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
+            >Subtasks</UiLabel
+          >
           <div class="space-y-3">
             <div
               v-for="(subtask, index) in taskData.subtasks"
@@ -39,7 +43,7 @@
             >
               <UiInput
                 v-model="subtask.title"
-                class="flex-1 text-[13px] bg-card"
+                class="flex-1 text-[13px] bg-card dark:border-gray-700"
                 placeholder="Subtask Title"
               />
               <button
@@ -61,9 +65,13 @@
         </div>
 
         <div class="space-y-2">
-          <UiLabel class="text-[12px] font-bold text-black">Status</UiLabel>
+          <UiLabel class="text-[12px] font-bold text-black dark:text-white"
+            >Status</UiLabel
+          >
           <UiSelect v-model="taskData.status">
-            <UiSelectTrigger class="w-full text-[13px] bg-card">
+            <UiSelectTrigger
+              class="w-full text-[13px] bg-card dark:border-gray-700"
+            >
               <UiSelectValue>
                 <div class="flex items-center gap-3">
                   <div
@@ -76,7 +84,7 @@
                 </div>
               </UiSelectValue>
             </UiSelectTrigger>
-            <UiSelectContent class="bg-white">
+            <UiSelectContent class="bg-white dark:bg-background">
               <UiSelectItem
                 v-for="column in columns"
                 :key="column.name"
