@@ -1,0 +1,471 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "name": "Platform Launch",
+      "isActive": true,
+      "columns": [
+        {
+          "name": "Todo",
+          "label": "#49C4E5",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "Build UI for search",
+              "description": "Search page needs to be implemented for better navigation",
+              "subtasks": [
+                {
+                  "title": "Research search solutions",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Design search interface",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Todo"
+            },
+            {
+              "id": 2,
+              "title": "Create wireframe prototype",
+              "description": "Initial wireframes needed for stakeholder review",
+              "subtasks": [
+                {
+                  "title": "Draft basic layouts",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Todo"
+            },
+            {
+              "id": 3,
+              "title": "Implement user authentication",
+              "description": "Set up secure user authentication system",
+              "subtasks": [
+                {
+                  "title": "Set up OAuth integration",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Implement password reset",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Todo"
+            },
+            {
+              "id": 4,
+              "title": "Design system architecture",
+              "description": "Plan the overall system architecture and tech stack",
+              "subtasks": [
+                {
+                  "title": "Database schema design",
+                  "isCompleted": false
+                },
+                {
+                  "title": "API structure planning",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Todo"
+            },
+            {
+              "id": 5,
+              "title": "Setup development environment",
+              "description": "Configure development tools and environments",
+              "subtasks": [
+                {
+                  "title": "Setup CI/CD pipeline",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Configure testing framework",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Todo"
+            }
+          ]
+        },
+        {
+          "name": "Doing",
+          "label": "#8471F2",
+          "tasks": [
+            {
+              "id": 6,
+              "title": "Design settings and search pages",
+              "description": "Create intuitive interface for settings and search",
+              "subtasks": [
+                {
+                  "title": "Design user settings page",
+                  "isCompleted": true
+                },
+                {
+                  "title": "Implement search functionality",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Doing"
+            },
+            {
+              "id": 7,
+              "title": "Implement API endpoints",
+              "description": "Develop core API functionality",
+              "subtasks": [
+                {
+                  "title": "User endpoints",
+                  "isCompleted": true
+                },
+                {
+                  "title": "Data endpoints",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Doing"
+            },
+            {
+              "id": 8,
+              "title": "Database optimization",
+              "description": "Optimize database queries and structure",
+              "subtasks": [
+                {
+                  "title": "Index optimization",
+                  "isCompleted": true
+                },
+                {
+                  "title": "Query performance tuning",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Doing"
+            }
+          ]
+        },
+        {
+          "name": "Done",
+          "label": "#67E2AE",
+          "tasks": [
+            {
+              "id": 9,
+              "title": "Project setup",
+              "description": "Initial project configuration and setup",
+              "subtasks": [
+                {
+                  "title": "Repository setup",
+                  "isCompleted": true
+                },
+                {
+                  "title": "Development environment",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            },
+            {
+              "id": 10,
+              "title": "Design system implementation",
+              "description": "Implement core design system components",
+              "subtasks": [
+                {
+                  "title": "Color system",
+                  "isCompleted": true
+                },
+                {
+                  "title": "Typography",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            },
+            {
+              "id": 11,
+              "title": "User research",
+              "description": "Conduct initial user research and analysis",
+              "subtasks": [
+                {
+                  "title": "User interviews",
+                  "isCompleted": true
+                },
+                {
+                  "title": "Survey analysis",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            },
+            {
+              "id": 12,
+              "title": "Core infrastructure setup",
+              "description": "Setup basic infrastructure components",
+              "subtasks": [
+                {
+                  "title": "Server configuration",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            },
+            {
+              "id": 13,
+              "title": "Documentation framework",
+              "description": "Implement documentation system",
+              "subtasks": [
+                {
+                  "title": "Setup documentation site",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            },
+            {
+              "id": 14,
+              "title": "Basic security implementation",
+              "description": "Implement core security features",
+              "subtasks": [
+                {
+                  "title": "SSL setup",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Marketing Plan",
+      "isActive": false,
+      "columns": [
+        {
+          "name": "Todo",
+          "label": "#FF9898",
+          "tasks": [
+            {
+              "id": 15,
+              "title": "Social media strategy",
+              "description": "Develop comprehensive social media strategy",
+              "subtasks": [
+                {
+                  "title": "Platform selection",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Content calendar",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Todo"
+            },
+            {
+              "id": 16,
+              "title": "Email campaign planning",
+              "description": "Plan Q1 email marketing campaigns",
+              "subtasks": [
+                {
+                  "title": "Subscriber segmentation",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Todo"
+            },
+            {
+              "id": 17,
+              "title": "Brand guidelines update",
+              "description": "Update brand guidelines for 2024",
+              "subtasks": [
+                {
+                  "title": "Visual identity refresh",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Todo"
+            }
+          ]
+        },
+        {
+          "name": "Doing",
+          "label": "#8471F2",
+          "tasks": [
+            {
+              "id": 18,
+              "title": "Website optimization",
+              "description": "Optimize website for better conversion",
+              "subtasks": [
+                {
+                  "title": "SEO audit",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Doing"
+            },
+            {
+              "id": 19,
+              "title": "Content creation",
+              "description": "Create content for blog and social media",
+              "subtasks": [
+                {
+                  "title": "Blog posts drafting",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Doing"
+            }
+          ]
+        },
+        {
+          "name": "Done",
+          "label": "#67E2AE",
+          "tasks": [
+            {
+              "id": 20,
+              "title": "Competitor analysis",
+              "description": "Complete market competitor analysis",
+              "subtasks": [
+                {
+                  "title": "Market research",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            },
+            {
+              "id": 21,
+              "title": "Brand messaging",
+              "description": "Define core brand messaging",
+              "subtasks": [
+                {
+                  "title": "Value proposition",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            },
+            {
+              "id": 22,
+              "title": "Marketing tools setup",
+              "description": "Setup and configure marketing tools",
+              "subtasks": [
+                {
+                  "title": "Analytics setup",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            },
+            {
+              "id": 23,
+              "title": "Initial market research",
+              "description": "Complete initial market research phase",
+              "subtasks": [
+                {
+                  "title": "Survey completion",
+                  "isCompleted": true
+                }
+              ],
+              "status": "Done"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Roadmap",
+      "isActive": false,
+      "columns": [
+        {
+          "name": "Now",
+          "label": "#49C4E5",
+          "tasks": [
+            {
+              "id": 24,
+              "title": "Q1 planning",
+              "description": "Complete Q1 2024 roadmap planning",
+              "subtasks": [
+                {
+                  "title": "Feature prioritization",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Now"
+            },
+            {
+              "id": 25,
+              "title": "Resource allocation",
+              "description": "Plan resource allocation for Q1",
+              "subtasks": [
+                {
+                  "title": "Team capacity planning",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Now"
+            }
+          ]
+        },
+        {
+          "name": "Next",
+          "label": "#8471F2",
+          "tasks": [
+            {
+              "id": 26,
+              "title": "Product expansion",
+              "description": "Plan product line expansion",
+              "subtasks": [
+                {
+                  "title": "Market analysis",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Next"
+            }
+          ]
+        },
+        {
+          "name": "Later",
+          "label": "#FF9898",
+          "tasks": [
+            {
+              "id": 27,
+              "title": "International expansion",
+              "description": "Plan international market entry",
+              "subtasks": [
+                {
+                  "title": "Market research",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Later"
+            },
+            {
+              "id": 28,
+              "title": "Mobile app development",
+              "description": "Plan native mobile app development",
+              "subtasks": [
+                {
+                  "title": "Requirements gathering",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Later"
+            },
+            {
+              "id": 29,
+              "title": "Enterprise features",
+              "description": "Plan enterprise feature set",
+              "subtasks": [
+                {
+                  "title": "Feature scoping",
+                  "isCompleted": false
+                }
+              ],
+              "status": "Later"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
