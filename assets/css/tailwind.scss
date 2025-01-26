@@ -115,6 +115,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  .ghost-item {
+    @apply bg-background text-black border-2 border-dashed border-[#000000] dark:border-white;
+  }
 }
 
 @layer utilities {

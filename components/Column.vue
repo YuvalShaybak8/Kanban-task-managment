@@ -51,14 +51,13 @@
               v-model="column.tasks"
               :group="{ name: 'tasks', pull: true, put: true }"
               :animation="150"
-              ghost-class="border-2 border-dashed border-purple/50 bg-background/5 opacity-80"
-              drag-class="opacity-90 cursor-grabbing shadow-lg scale-105"
               :class="{ 'cursor-grabbing': isDragging }"
-              item-key="id"
+              item-key="task.id"
               @change="(evt) => handleChange(evt, column.name)"
               @start="isDragging = true"
               @end="isDragging = false"
               class="space-y-5"
+              ghost-class="ghost-item"
             >
               <template #item="{ element: task }">
                 <UiCard
