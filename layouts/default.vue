@@ -1,6 +1,10 @@
 <template>
   <div>
-    <MobileMenu class="lg:hidden" />
+    <div class="lg:hidden">
+      <MobileMenu />
+      <NuxtPage />
+    </div>
+
     <div class="hidden lg:block">
       <SidebarView>
         <UiSidebarInset>

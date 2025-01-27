@@ -4,7 +4,9 @@
     @update:open="$emit('update:modelValue', $event)"
     class="focus:outline-none"
   >
-    <UiDialogContent class="sm:max-w-[480px] bg-card !ring-0 !outline-none">
+    <UiDialogContent
+      class="sm:max-w-[480px] max-w-[90vw] rounded mx-auto bg-card !ring-0 !outline-none"
+    >
       <UiDialogHeader class="flex flex-row justify-between">
         <UiDialogTitle class="text-xl font-bold">{{
           task.title

@@ -3,7 +3,9 @@
     :open="modelValue"
     @update:open="$emit('update:modelValue', $event)"
   >
-    <UiDialogContent class="sm:max-w-[480px] bg-card dark:bg-background">
+    <UiDialogContent
+      class="sm:max-w-[480px] bg-card max-w-[90vw] rounded mx-auto dark:bg-background"
+    >
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold text-delete_button">
           Delete Task

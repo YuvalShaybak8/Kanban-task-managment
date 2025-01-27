@@ -3,10 +3,20 @@
     <UiDialogTrigger
       class="bg-button_modal hover:bg-button_modal/90 text-button_text rounded-full px-4 py-2.5 flex items-center gap-2 font-bold text-[17px]"
     >
-      <span class="font-medium text-[17px]">+</span>
-      Add New Task
+      <!-- Mobile View -->
+      <span
+        class="flex w-5 h-1 items-center justify-center text-[22px] font-medium leading-none mb-2 lg:hidden"
+      >
+        +
+      </span>
+
+      <!-- Desktop View -->
+      <span class="font-medium text-[17px] hidden lg:inline"> + </span>
+      <span class="hidden lg:inline"> Add New Task </span>
     </UiDialogTrigger>
-    <UiDialogContent class="sm:max-w-[480px] bg-card">
+    <UiDialogContent
+      class="sm:max-w-[480px] max-w-[95vw] mx-auto rounded bg-card"
+    >
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold">Add New Task</UiDialogTitle>
         <UiDialogClose

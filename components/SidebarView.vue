@@ -45,26 +45,7 @@
 
         <UiSidebarMenu>
           <div class="pb-8">
-            <div class="px-6 mb-4">
-              <div
-                class="bg-background rounded-md p-2.5 flex items-center justify-center gap-4"
-              >
-                <SunIcon class="h-5 w-5 text-gray" />
-                <UiSwitch
-                  @update:checked="
-                    (value) => {
-                      if (value) {
-                        colorMode.preference = 'dark';
-                      } else {
-                        colorMode.preference = 'light';
-                      }
-                    }
-                  "
-                  class="data-[state]:bg-purple data-[state]:text-white"
-                />
-                <MoonIcon class="h-5 w-5 text-gray" />
-              </div>
-            </div>
+            <SwitchMode />
 
             <div
               class="mr-6 hover:bg-background group rounded-r-full transition-colors duration-200"
@@ -113,8 +94,7 @@
 <script setup lang="ts">
 import { useBoardStore } from "../stores/boardStore";
 import type { Board } from "@/types/board";
-import MoonIcon from "./Icons/MoonIcon.vue";
-import SunIcon from "./Icons/SunIcon.vue";
+import SwitchMode from "./SwitchMode.vue";
 import HideSidebar from "./Icons/HideSidebar.vue";
 import ShowSidebar from "./Icons/ShowSidebar.vue";
 import BoardIcon from "./Icons/BoardIcon.vue";
@@ -123,31 +103,10 @@ import Logo from "./Logo.vue";
 const boardStore = useBoardStore();
 const boards = computed(() => boardStore.boards);
 const isCollapsed = computed(() => boardStore.isCollapsed);
-const colorMode = useColorMode();
-
-// const isDarkMode = computed(() => boardStore.isDarkMode);
 
 const setActiveBoard = (boardId: number) => {
   boardStore.setActiveBoard(boardId);
 };
-
-// onMounted(() => {
-//   const savedTheme = localStorage.getItem("theme");
-//   if (savedTheme === "dark") {
-//     boardStore.toggleDarkMode();
-//     document.documentElement.classList.add("dark");
-//   }
-// });
-
-// watch(isDarkMode, (newValue) => {
-//   if (newValue) {
-//     document.documentElement.classList.add("dark");
-//     localStorage.setItem("theme", "dark");
-//   } else {
-//     document.documentElement.classList.remove("dark");
-//     localStorage.setItem("theme", "light");
-//   }
-// });
 
 const emit = defineEmits<{
   (e: "sidebarToggle", value: boolean): void;
@@ -160,7 +119,6 @@ const toggleSidebar = () => {
 
 const addNewBoard = (newBoard: Omit<Board, "isActive" | "columns">) => {
   boardStore.addBoard(newBoard);
-
   boardStore.setActiveBoard(newBoard.id);
 };
 </script>

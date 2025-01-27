@@ -3,12 +3,12 @@
     <UiDialogTrigger
       class="dark:hover:bg-purple/10 w-11/12 flex items-center py-[13px] font-medium text-purple hover:bg-background rounded-r-full text-[16px]"
     >
-      <span class="pl-8 flex items-center w-full">
+      <span class="pl-4 lg:pl-8 flex items-center w-full">
         <BoardIcon class="mr-3 h-4 w-4" />
         + Create New Board
       </span>
     </UiDialogTrigger>
-    <UiDialogContent class="sm:max-w-[480px] dark:bg-card">
+    <UiDialogContent class="sm:max-w-[480px] max-w-[95vw] mx-auto bg-card">
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold">Add new board</UiDialogTitle>
         <UiDialogClose

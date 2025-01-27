@@ -1,9 +1,7 @@
 <template>
-  <div class="h-[calc(100vh-80px)] w-full overflow-hidden">
-    <div class="h-full w-full p-6">
-      <div
-        class="h-full flex gap-6 overflow-x-auto overflow-y-hidden no-scrollbar"
-      >
+  <div class="h-[calc(100vh-80px)] w-full overflow-auto">
+    <div class="h-full w-full">
+      <div class="h-full flex gap-6 p-6 w-max">
         <div
           v-for="column in activeBoard.columns"
           :key="column.name"
@@ -58,6 +56,7 @@
               @end="isDragging = false"
               class="space-y-5"
               ghost-class="ghost-item"
+              drag-class="drag-item"
             >
               <template #item="{ element: task }">
                 <UiCard

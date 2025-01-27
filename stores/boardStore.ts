@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-
 import type { Board, Column, Task } from "@/types/board";
 import initialData from "@/data/database.json";
 

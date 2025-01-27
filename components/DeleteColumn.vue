@@ -3,7 +3,9 @@
     :open="modelValue"
     @update:open="$emit('update:modelValue', $event)"
   >
-    <UiDialogContent class="sm:max-w-[480px] bg-card dark:bg-card">
+    <UiDialogContent
+      class="sm:max-w-[480px] max-w-[90vw] rounded mx-auto bg-card dark:bg-card"
+    >
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold text-delete_button">
           Delete this column?
