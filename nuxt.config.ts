@@ -3,6 +3,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
     "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
     "@nuxtjs/color-mode",
   ],
 
@@ -14,6 +15,7 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: "~/assets/css/tailwind.scss",
   },
+
   alias: {
     "#app-manifest": "~/.nuxt/app.manifest.mjs",
   },
