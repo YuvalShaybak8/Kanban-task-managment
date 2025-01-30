@@ -158,6 +158,12 @@ const emit = defineEmits<{
 
 const boardStore = useBoardStore();
 
+const currentBoard = computed(() => {
+  return boardStore.boards.find(
+    (board) => board.id === boardStore.activeBoardId
+  );
+});
+
 const showEditTask = ref(false);
 const showDeleteTask = ref(false);
 
@@ -171,21 +177,25 @@ const getColumnColor = (columnName: string) => {
 };
 
 const toggleSubtask = (index: number) => {
-  const subtask = props.task.subtasks[index];
-  boardStore.updateSubtask(props.task.id, index, !subtask.isCompleted);
+  if (currentBoard.value) {
+    const subtask = props.task.subtasks[index];
+    boardStore.updateSubtask(props.task.id, index, !subtask.isCompleted);
+  }
 };
 
 const currentStatus = computed({
   get: () => props.task.status,
   set: (newStatus: string) => {
-    if (newStatus !== props.task.status) {
+    if (newStatus !== props.task.status && currentBoard.value) {
       boardStore.updateTaskStatus(props.task.id, newStatus);
     }
   },
 });
 
 const updateTaskStatus = (newStatus: string) => {
-  currentStatus.value = newStatus;
+  if (currentBoard.value && newStatus !== props.task.status) {
+    boardStore.updateTaskStatus(props.task.id, newStatus);
+  }
 };
 
 const handleEditClick = () => {
@@ -199,14 +209,18 @@ const handleDeleteClick = () => {
 };
 
 const handleUpdateTask = (updatedTask: Task) => {
-  boardStore.updateTask(props.task.id, updatedTask);
-  showEditTask.value = false;
-  emit("update:modelValue", false);
+  if (currentBoard.value) {
+    boardStore.updateTask(props.task.id, updatedTask);
+    showEditTask.value = false;
+    emit("update:modelValue", false);
+  }
 };
 
 const handleDeleteTask = () => {
-  boardStore.deleteTask(props.task.id);
-  showDeleteTask.value = false;
-  emit("update:modelValue", false);
+  if (currentBoard.value) {
+    boardStore.deleteTask(props.task.id);
+    showDeleteTask.value = false;
+    emit("update:modelValue", false);
+  }
 };
 </script>

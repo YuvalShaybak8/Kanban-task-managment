@@ -101,7 +101,7 @@
                   <div
                     class="w-3 h-3 rounded-full"
                     :style="{
-                      backgroundColor: activeBoard.columns.find(
+                      backgroundColor: currentBoard?.columns.find(
                         (col) => col.name === taskData.status
                       )?.label,
                     }"
@@ -113,7 +113,7 @@
             </UiSelectTrigger>
             <UiSelectContent class="bg-white">
               <UiSelectItem
-                v-for="column in activeBoard.columns"
+                v-for="column in currentBoard?.columns"
                 :key="column.name"
                 :value="column.name"
                 class="text-[13px]"
@@ -147,7 +147,11 @@ import type { Task } from "@/types/board";
 import CrossIcon from "./Icons/CrossIcon.vue";
 
 const boardStore = useBoardStore();
-const activeBoard = computed(() => boardStore.activeBoard);
+const activeBoardId = computed(() => boardStore.activeBoardId);
+
+const currentBoard = computed(() =>
+  boardStore.boards.find((board) => board.id === activeBoardId.value)
+);
 
 const taskData = ref({
   title: "",
@@ -170,7 +174,7 @@ const removeSubtask = (index: number) => {
 };
 
 const createTask = () => {
-  if (!taskData.value.title.trim()) return;
+  if (!taskData.value.title.trim() || !activeBoardId.value) return;
 
   const newTask: Omit<Task, "id"> = {
     title: taskData.value.title,
@@ -179,13 +183,13 @@ const createTask = () => {
     status: taskData.value.status,
   };
 
-  boardStore.addTask(activeBoard.value.id, taskData.value.status, newTask);
+  boardStore.addTask(activeBoardId.value, taskData.value.status, newTask);
 
   taskData.value = {
     title: "",
     description: "",
     subtasks: [],
-    status: activeBoard.value.columns[0]?.name || "",
+    status: currentBoard.value?.columns[0]?.name || "",
   };
 
   const dialogClose = document.querySelector('[data-state="open"]');

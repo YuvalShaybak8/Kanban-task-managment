@@ -6,7 +6,7 @@
         <div class="h-[80px] w-px bg-gray-200 dark:bg-border mx-4" />
         <UiDropdownMenu>
           <UiDropdownMenuTrigger class="flex items-center gap-2 h-[80px] group">
-            <h1 class="text-xl font-bold">{{ activeBoard.name }}</h1>
+            <h1 class="text-xl font-bold">{{ currentBoard?.name }}</h1>
             <div class="flex items-center">
               <ChevronUp
                 class="text-purple transform origin-center transition-transform duration-200 group-data-[state=open]:rotate-180"
@@ -24,7 +24,7 @@
                 @click="setActiveBoard(board.id)"
                 :class="[
                   'w-11/12 flex items-center py-3 rounded-r-full font-medium text-[16px] transition-colors cursor-pointer',
-                  board.isActive
+                  board.id === activeBoardId
                     ? 'bg-purple text-white'
                     : 'text-gray hover:bg-background dark:hover:bg-purple/10 hover:text-purple',
                 ]"
@@ -33,8 +33,8 @@
                   <BoardIcon
                     class="mr-3 h-4 w-4"
                     :class="{
-                      'text-white': board.isActive,
-                      'text-gray': !board.isActive,
+                      'text-white': board.id === activeBoardId,
+                      'text-gray': board.id !== activeBoardId,
                     }"
                   />
                   {{ board.name }}
@@ -76,14 +76,14 @@
     <EditBoard
       v-if="showEditBoard"
       v-model="showEditBoard"
-      :board="activeBoard"
+      :board="currentBoard"
       @board-updated="updateBoard"
     />
 
     <DeleteBoard
       v-if="showDeleteBoard"
       v-model="showDeleteBoard"
-      :board="activeBoard"
+      :board="currentBoard"
       @board-deleted="deleteBoard"
     />
   </nav>
@@ -103,8 +103,11 @@ import CreateBoard from "./CreateBoard.vue";
 import CreateTask from "./CreateTask.vue";
 
 const boardStore = useBoardStore();
-const activeBoard = computed(() => boardStore.activeBoard);
+const activeBoardId = computed(() => boardStore.activeBoardId);
 const boards = computed(() => boardStore.boards);
+const currentBoard = computed(() =>
+  boards.value.find((board) => board.id === activeBoardId.value)
+);
 
 const showEditBoard = ref(false);
 const showDeleteBoard = ref(false);
@@ -115,17 +118,23 @@ const setActiveBoard = (boardId: number) => {
 };
 
 const updateBoard = (boardName: string) => {
-  boardStore.updateBoardName(activeBoard.value.id, boardName);
-  showEditBoard.value = false;
+  if (activeBoardId.value) {
+    boardStore.updateBoardName(activeBoardId.value, boardName);
+    showEditBoard.value = false;
+  }
 };
 
 const deleteBoard = () => {
-  boardStore.deleteBoard(activeBoard.value.id);
-  showDeleteBoard.value = false;
+  if (activeBoardId.value) {
+    boardStore.deleteBoard(activeBoardId.value);
+    showDeleteBoard.value = false;
+  }
 };
 
-const addNewBoard = (newBoard: Omit<Board, "isActive" | "columns">) => {
+const addNewBoard = (newBoard: Omit<Board, "columns">) => {
   boardStore.addBoard(newBoard);
-  boardStore.setActiveBoard(newBoard.id);
+  if (newBoard.id) {
+    boardStore.setActiveBoard(newBoard.id);
+  }
 };
 </script>

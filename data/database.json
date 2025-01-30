@@ -3,7 +3,6 @@
     {
       "id": 1,
       "name": "Platform Launch",
-      "isActive": true,
       "columns": [
         {
           "name": "Todo",
@@ -236,7 +235,6 @@
     {
       "id": 2,
       "name": "Marketing Plan",
-      "isActive": false,
       "columns": [
         {
           "name": "Todo",
@@ -373,7 +371,6 @@
     {
       "id": 3,
       "name": "Roadmap",
-      "isActive": false,
       "columns": [
         {
           "name": "Now",

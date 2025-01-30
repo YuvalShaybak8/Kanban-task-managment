@@ -7,7 +7,7 @@
 
       <div class="flex-1 flex items-center justify-between px-6">
         <div class="board-title">
-          <h1 class="text-xl font-bold">{{ activeBoard.name }}</h1>
+          <h1 class="text-xl font-bold">{{ currentBoard?.name }}</h1>
         </div>
 
         <div class="flex items-center gap-4">
@@ -40,14 +40,14 @@
     <EditBoard
       v-if="showEditBoard"
       v-model="showEditBoard"
-      :board="activeBoard"
+      :board="currentBoard"
       @board-updated="updateBoard"
     />
 
     <DeleteBoard
       v-if="showDeleteBoard"
       v-model="showDeleteBoard"
-      :board="activeBoard"
+      :board="currentBoard"
       @board-deleted="deleteBoard"
     />
   </nav>
@@ -61,19 +61,28 @@ import EditBoard from "./EditBoard.vue";
 import DeleteBoard from "./DeleteBoard.vue";
 
 const boardStore = useBoardStore();
-const activeBoard = computed(() => boardStore.activeBoard);
+const activeBoardId = computed(() => boardStore.activeBoardId);
+
+const currentBoard = computed(() =>
+  boardStore.boards.find((board) => board.id === activeBoardId.value)
+);
+
 const isCollapsed = computed(() => boardStore.isCollapsed);
 
 const showEditBoard = ref(false);
 const showDeleteBoard = ref(false);
 
 const updateBoard = (boardName: string) => {
-  boardStore.updateBoardName(activeBoard.value.id, boardName);
-  showEditBoard.value = false;
+  if (activeBoardId.value) {
+    boardStore.updateBoardName(activeBoardId.value, boardName);
+    showEditBoard.value = false;
+  }
 };
 
 const deleteBoard = () => {
-  boardStore.deleteBoard(activeBoard.value.id);
-  showDeleteBoard.value = false;
+  if (activeBoardId.value) {
+    boardStore.deleteBoard(activeBoardId.value);
+    showDeleteBoard.value = false;
+  }
 };
 </script>

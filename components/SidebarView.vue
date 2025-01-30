@@ -18,19 +18,24 @@
           <UiSidebarMenuItem v-for="board in boards" :key="board.id">
             <UiSidebarMenuButton
               @click="setActiveBoard(board.id)"
-              :class="[
-                'w-11/12 flex items-center py-6 rounded-r-full font-medium text-[16px] transition-colors',
-                board.isActive
-                  ? 'bg-text_purple text-background dark:text-white'
-                  : 'text-gray hover:bg-background dark:hover:bg-purple/10 hover:text-text_purple',
-              ]"
+              :class="
+                cn(
+                  'w-11/12 flex items-center py-6 rounded-r-full font-medium text-[16px] transition-colors',
+                  {
+                    'bg-green-500 text-background dark:text-white':
+                      board.id === activeBoardId,
+                    'text-gray hover:bg-background dark:hover:bg-purple/10 hover:text-text_purple':
+                      board.id !== activeBoardId,
+                  }
+                )
+              "
             >
               <span class="pl-6 flex items-center w-full">
                 <BoardIcon
                   class="mr-3 h-4 w-4 dark:hover:text-text_purple"
                   :class="{
-                    'text-white': board.isActive,
-                    'text-gray': !board.isActive,
+                    'text-white': board.id === activeBoardId,
+                    'text-gray': board.id !== activeBoardId,
                   }"
                 />
                 {{ board.name }}
@@ -99,9 +104,11 @@ import HideSidebar from "./Icons/HideSidebar.vue";
 import ShowSidebar from "./Icons/ShowSidebar.vue";
 import BoardIcon from "./Icons/BoardIcon.vue";
 import Logo from "./Logo.vue";
+import { cn } from "@/lib/utils";
 
 const boardStore = useBoardStore();
 const boards = computed(() => boardStore.boards);
+const activeBoardId = computed(() => boardStore.activeBoardId);
 const isCollapsed = computed(() => boardStore.isCollapsed);
 
 const setActiveBoard = (boardId: number) => {
@@ -117,8 +124,10 @@ const toggleSidebar = () => {
   emit("sidebarToggle", boardStore.isCollapsed);
 };
 
-const addNewBoard = (newBoard: Omit<Board, "isActive" | "columns">) => {
+const addNewBoard = (newBoard: Omit<Board, "columns">) => {
   boardStore.addBoard(newBoard);
-  boardStore.setActiveBoard(newBoard.id);
+  if (newBoard.id) {
+    boardStore.setActiveBoard(newBoard.id);
+  }
 };
 </script>

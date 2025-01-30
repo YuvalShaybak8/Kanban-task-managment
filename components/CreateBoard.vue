@@ -58,7 +58,7 @@ const boardName = ref("");
 const boardStore = useBoardStore();
 
 const emit = defineEmits<{
-  (e: "board-created", board: Omit<Board, "isActive" | "columns" | "id">): void;
+  (e: "board-created", board: Omit<Board, "columns" | "id">): void;
 }>();
 
 const closeDialog = () => {
@@ -78,7 +78,7 @@ const createBoard = () => {
   };
 
   emit("board-created", newBoard);
-  boardStore.setActiveBoard(newBoard.id);
+  boardStore.activeBoardId = newBoard.id;
 
   boardName.value = "";
   closeDialog();

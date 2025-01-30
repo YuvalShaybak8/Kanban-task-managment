@@ -7,61 +7,37 @@ export const useBoardStore = defineStore(
   () => {
     // States
     const boards = ref<Board[]>(initialData.boards);
-    const activeBoard = ref<Board>(initialData.boards[0]);
+    const activeBoardId = ref<number | null>(null);
     const isCollapsed = ref(false);
-    const isDarkMode = ref(false);
 
     // Actions
     const setActiveBoard = (id: number) => {
-      const targetBoard = boards.value.find((board) => board.id === id);
-      if (!targetBoard) return;
-
-      boards.value = boards.value.map((board) => ({
-        ...board,
-        isActive: board.id === id,
-      }));
-
-      activeBoard.value = targetBoard;
+      activeBoardId.value = id;
     };
 
     const toggleSidebar = () => {
       isCollapsed.value = !isCollapsed.value;
     };
 
-    const toggleDarkMode = () => {
-      isDarkMode.value = !isDarkMode.value;
-    };
-
-    const addBoard = (board: Omit<Board, "isActive" | "columns">) => {
-      boards.value = boards.value.map((b) => ({
-        ...b,
-        isActive: false,
-      }));
-
-      const maxId = Math.max(
-        ...boards.value.map((b) => (typeof b.id === "number" ? b.id : 0))
-      );
+    const addBoard = (board: Omit<Board, "columns">) => {
+      const maxId = Math.max(...boards.value.map((b) => b.id));
       const nextId = maxId + 1;
 
       const newBoard = {
         id: nextId,
         name: board.name,
-        isActive: true,
         columns: [],
       };
 
       boards.value.push(newBoard);
-      activeBoard.value = newBoard;
-      return newBoard.id;
+      activeBoardId.value = nextId;
+      return nextId;
     };
 
     const updateBoardName = (boardId: number, newName: string) => {
       const board = boards.value.find((b) => b.id === boardId);
       if (board) {
         board.name = newName;
-        if (board.id === activeBoard.value.id) {
-          activeBoard.value.name = newName;
-        }
       }
     };
 
@@ -69,9 +45,9 @@ export const useBoardStore = defineStore(
       const index = boards.value.findIndex((b) => b.id === boardId);
       if (index !== -1) {
         boards.value.splice(index, 1);
-        if (activeBoard.value.id === boardId) {
-          activeBoard.value = boards.value[0];
-          boards.value[0].isActive = true;
+        if (activeBoardId.value === boardId) {
+          // Set to first board if available, or null if no boards
+          activeBoardId.value = boards.value[0]?.id || null;
         }
       }
     };
@@ -105,10 +81,6 @@ export const useBoardStore = defineStore(
               task.status = newColumn.name;
             }
           });
-
-          if (board.id === activeBoard.value.id) {
-            activeBoard.value = { ...board };
-          }
         }
       }
     };
@@ -121,9 +93,6 @@ export const useBoardStore = defineStore(
         );
         if (columnIndex !== -1) {
           board.columns.splice(columnIndex, 1);
-          if (board.id === activeBoard.value.id) {
-            activeBoard.value = { ...board };
-          }
         }
       }
     };
@@ -147,7 +116,7 @@ export const useBoardStore = defineStore(
     };
 
     const updateTask = (taskId: number, updatedTask: Task) => {
-      const board = boards.value.find((b) => b.id === activeBoard.value.id);
+      const board = boards.value.find((b) => b.id === activeBoardId.value);
       if (board) {
         for (const column of board.columns) {
           const taskIndex = column.tasks.findIndex((t) => t.id === taskId);
@@ -163,9 +132,6 @@ export const useBoardStore = defineStore(
             } else {
               column.tasks[taskIndex] = updatedTask;
             }
-            if (board.id === activeBoard.value.id) {
-              activeBoard.value = { ...board };
-            }
             break;
           }
         }
@@ -173,15 +139,12 @@ export const useBoardStore = defineStore(
     };
 
     const deleteTask = (taskId: number) => {
-      const board = boards.value.find((b) => b.id === activeBoard.value.id);
+      const board = boards.value.find((b) => b.id === activeBoardId.value);
       if (board) {
         for (const column of board.columns) {
           const taskIndex = column.tasks.findIndex((t) => t.id === taskId);
           if (taskIndex !== -1) {
             column.tasks.splice(taskIndex, 1);
-            if (board.id === activeBoard.value.id) {
-              activeBoard.value = { ...board };
-            }
             break;
           }
         }
@@ -189,7 +152,7 @@ export const useBoardStore = defineStore(
     };
 
     const updateTaskStatus = (taskId: number, newStatus: string) => {
-      const board = boards.value.find((b) => b.id === activeBoard.value.id);
+      const board = boards.value.find((b) => b.id === activeBoardId.value);
       if (!board) return;
 
       let task: Task | null = null;
@@ -221,10 +184,6 @@ export const useBoardStore = defineStore(
           task.status = newStatus;
           targetColumn.tasks.push(task);
         }
-
-        if (board.id === activeBoard.value.id) {
-          activeBoard.value = { ...board };
-        }
       }
     };
 
@@ -233,15 +192,12 @@ export const useBoardStore = defineStore(
       subtaskIndex: number,
       isCompleted: boolean
     ) => {
-      const board = boards.value.find((b) => b.id === activeBoard.value.id);
+      const board = boards.value.find((b) => b.id === activeBoardId.value);
       if (board) {
         for (const column of board.columns) {
           const task = column.tasks.find((t) => t.id === taskId);
           if (task && task.subtasks[subtaskIndex]) {
             task.subtasks[subtaskIndex].isCompleted = isCompleted;
-            if (board.id === activeBoard.value.id) {
-              activeBoard.value = { ...board };
-            }
             break;
           }
         }
@@ -251,13 +207,11 @@ export const useBoardStore = defineStore(
     return {
       // State
       boards,
-      activeBoard,
+      activeBoardId,
       isCollapsed,
-      isDarkMode,
       // Actions
       setActiveBoard,
       toggleSidebar,
-      toggleDarkMode,
       addBoard,
       updateBoardName,
       deleteBoard,
@@ -275,7 +229,7 @@ export const useBoardStore = defineStore(
     persist: {
       key: "kanban-store",
       storage: import.meta.client ? localStorage : null,
-      pick: ["boards", "activeBoard", "isCollapsed", "isDarkMode"],
+      pick: ["boards", "activeBoardId", "isCollapsed"],
     },
   }
 );

@@ -3,7 +3,7 @@
     <div class="h-full w-full">
       <div class="h-full flex gap-6 p-6 w-max">
         <div
-          v-for="column in activeBoard.columns"
+          v-for="column in currentBoard?.columns"
           :key="column.name"
           class="min-w-[280px] w-[280px] flex flex-col"
         >
@@ -85,7 +85,7 @@
         </div>
 
         <CreateColumn
-          v-if="activeBoard.columns.length < 6"
+          v-if="currentBoard?.columns.length < 6"
           @column-created="addNewColumn"
         />
 
@@ -120,7 +120,12 @@ import DeleteColumn from "./DeleteColumn.vue";
 const isDragging = ref(false);
 
 const boardStore = useBoardStore();
-const activeBoard = computed(() => boardStore.activeBoard);
+const activeBoardId = computed(() => boardStore.activeBoardId);
+
+// Get the current board using the ID
+const currentBoard = computed(() =>
+  boardStore.boards.find((board) => board.id === activeBoardId.value)
+);
 
 const showEditColumn = ref(false);
 const showDeleteColumn = ref(false);
@@ -129,7 +134,7 @@ const selectedColumn = ref<any>(null);
 const isTaskDialogOpen = ref(false);
 const selectedTask = ref<Task | null>(null);
 
-const columns = computed(() => activeBoard.value.columns);
+const columns = computed(() => currentBoard.value?.columns || []);
 
 const handleChange = (evt: any, columnName: string) => {
   if (evt.added) {
@@ -157,16 +162,18 @@ const getSubtasksCount = (task: Task) => {
 };
 
 const addNewColumn = (newColumn: { name: string; color: string }) => {
-  boardStore.addColumn(activeBoard.value.id, {
-    name: newColumn.name,
-    label: newColumn.color,
-  });
+  if (activeBoardId.value) {
+    boardStore.addColumn(activeBoardId.value, {
+      name: newColumn.name,
+      label: newColumn.color,
+    });
+  }
 };
 
 const updateColumn = (updatedColumn: { name: string; label: string }) => {
-  if (selectedColumn.value) {
+  if (selectedColumn.value && activeBoardId.value) {
     boardStore.updateColumn(
-      activeBoard.value.id,
+      activeBoardId.value,
       selectedColumn.value.name,
       updatedColumn
     );
@@ -176,8 +183,8 @@ const updateColumn = (updatedColumn: { name: string; label: string }) => {
 };
 
 const deleteColumn = () => {
-  if (selectedColumn.value && activeBoard.value) {
-    boardStore.deleteColumn(activeBoard.value.id, selectedColumn.value.name);
+  if (selectedColumn.value && activeBoardId.value) {
+    boardStore.deleteColumn(activeBoardId.value, selectedColumn.value.name);
     showDeleteColumn.value = false;
   }
 };
