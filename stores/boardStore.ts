@@ -1,14 +1,16 @@
 import { defineStore } from "pinia";
-import type { Board, Column, Task } from "@/types/board";
+import type { Board, BoardStore, Column, Task } from "@/types/board";
 import initialData from "@/data/database.json";
 
 export const useBoardStore = defineStore(
   "board",
   () => {
-    // States
+    // State
     const boards = ref<Board[]>(initialData.boards);
-    const activeBoardId = ref<number | null>(null);
+    const activeBoardId = ref<number | null>(boards.value[0]?.id || null);
     const isCollapsed = ref(false);
+
+    const isActive = (id: number) => activeBoardId.value === id;
 
     // Actions
     const setActiveBoard = (id: number) => {
@@ -209,6 +211,7 @@ export const useBoardStore = defineStore(
       boards,
       activeBoardId,
       isCollapsed,
+      isActive,
       // Actions
       setActiveBoard,
       toggleSidebar,

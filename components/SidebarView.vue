@@ -22,10 +22,11 @@
                 cn(
                   'w-11/12 flex items-center py-6 rounded-r-full font-medium text-[16px] transition-colors',
                   {
-                    'bg-green-500 text-background dark:text-white':
-                      board.id === activeBoardId,
+                    'bg-button_modal text-background dark:text-white': isActive(
+                      board.id
+                    ),
                     'text-gray hover:bg-background dark:hover:bg-purple/10 hover:text-text_purple':
-                      board.id !== activeBoardId,
+                      !isActive(board.id),
                   }
                 )
               "
@@ -33,10 +34,7 @@
               <span class="pl-6 flex items-center w-full">
                 <BoardIcon
                   class="mr-3 h-4 w-4 dark:hover:text-text_purple"
-                  :class="{
-                    'text-white': board.id === activeBoardId,
-                    'text-gray': board.id !== activeBoardId,
-                  }"
+                  :class="cn('text-gray', { 'text-white': isActive(board.id) })"
                 />
                 {{ board.name }}
               </span>
@@ -106,28 +104,28 @@ import BoardIcon from "./Icons/BoardIcon.vue";
 import Logo from "./Logo.vue";
 import { cn } from "@/lib/utils";
 
-const boardStore = useBoardStore();
-const boards = computed(() => boardStore.boards);
-const activeBoardId = computed(() => boardStore.activeBoardId);
-const isCollapsed = computed(() => boardStore.isCollapsed);
+const { isCollapsed, boards } = storeToRefs(useBoardStore());
 
-const setActiveBoard = (boardId: number) => {
-  boardStore.setActiveBoard(boardId);
-};
+const {
+  setActiveBoard,
+  isActive,
+  addBoard,
+  toggleSidebar: _toggleSidebar,
+} = useBoardStore();
 
 const emit = defineEmits<{
   (e: "sidebarToggle", value: boolean): void;
 }>();
 
 const toggleSidebar = () => {
-  boardStore.toggleSidebar();
-  emit("sidebarToggle", boardStore.isCollapsed);
+  _toggleSidebar();
+  emit("sidebarToggle", isCollapsed.value);
 };
 
 const addNewBoard = (newBoard: Omit<Board, "columns">) => {
-  boardStore.addBoard(newBoard);
+  addBoard(newBoard);
   if (newBoard.id) {
-    boardStore.setActiveBoard(newBoard.id);
+    setActiveBoard(newBoard.id);
   }
 };
 </script>

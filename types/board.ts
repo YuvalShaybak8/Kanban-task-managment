@@ -22,3 +22,9 @@ export interface Board {
   name: string;
   columns: Column[];
 }
+
+export interface BoardStore {
+  activeBoardId: number;
+  boards: Board[];
+  isCollapsed: boolean;
+}
