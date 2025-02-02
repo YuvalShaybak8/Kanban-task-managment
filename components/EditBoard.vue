@@ -21,7 +21,9 @@
           <UiInput
             v-model="boardName"
             placeholder="e.g. Web Design"
-            class="w-full text-[13px] dark:border-gray-700 dark:bg-card"
+            class="w-full text-[16px] dark:border-gray-700 dark:bg-card"
+            type="text"
+            required
           />
         </div>
 

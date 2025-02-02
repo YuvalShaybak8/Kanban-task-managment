@@ -14,7 +14,7 @@
       </div>
     </UiDialogTrigger>
 
-    <UiDialogContent class="sm:max-w-[425px]">
+    <UiDialogContent class="sm:max-w-[425px] max-w-[95vw] mx-auto rounded">
       <UiDialogHeader>
         <UiDialogTitle class="text-lg font-bold">Add New Column</UiDialogTitle>
       </UiDialogHeader>
@@ -27,6 +27,8 @@
             v-model="columnData.name"
             placeholder="e.g. Todo"
             class="w-full"
+            type="text"
+            required
           />
         </div>
 

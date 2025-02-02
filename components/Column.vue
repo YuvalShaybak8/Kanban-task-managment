@@ -48,7 +48,7 @@
             <draggable
               v-model="column.tasks"
               :group="{ name: 'tasks', pull: true, put: true }"
-              :animation="150"
+              :animation="prefersReducedMotion ? 0 : 150"
               :class="{ 'cursor-grabbing': isDragging }"
               item-key="task.id"
               @change="(evt) => handleChange(evt, column.name)"
@@ -60,16 +60,14 @@
             >
               <template #item="{ element: task }">
                 <UiCard
-                  class="bg-card dark:bg-sidebar-background hover:opacity-80 cursor-pointer transition-all duration-200"
+                  class="bg-card dark:bg-sidebar-background w-full text-start p-4 hover:opacity-80 cursor-pointer transition-all duration-200"
                   @click="openTaskDialog(task)"
                 >
-                  <UiCardContent class="p-4">
-                    <h4 class="font-bold text-[15px] mb-2">{{ task.title }}</h4>
-                    <p class="text-gray text-[11px] font-medium">
-                      {{ getSubtasksCount(task) }} of {{ task.subtasks.length }}
-                      subtasks
-                    </p>
-                  </UiCardContent>
+                  <h4 class="font-bold text-[15px] mb-2">{{ task.title }}</h4>
+                  <p class="text-gray text-[11px] font-medium">
+                    {{ getSubtasksCount(task) }} of {{ task.subtasks.length }}
+                    subtasks
+                  </p>
                 </UiCard>
               </template>
             </draggable>
@@ -116,6 +114,9 @@ import CreateColumn from "./CreateColumn.vue";
 import TaskView from "./TaskView.vue";
 import EditColumn from "./EditColumn.vue";
 import DeleteColumn from "./DeleteColumn.vue";
+import { useReducedMotion } from "@/composables/useReducedMotion";
+
+const { prefersReducedMotion } = useReducedMotion();
 
 const isDragging = ref(false);
 

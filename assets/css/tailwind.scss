@@ -108,6 +108,7 @@
 @layer base {
   * {
     @apply border-border;
+    -webkit-tap-highlight-color: transparent;
   }
   html {
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -122,6 +123,10 @@
   .drag-item {
     @apply bg-background text-black border-2 border-black dark:border-white;
   }
+
+  ::selection {
+    @apply bg-purple/30 text-foreground;
+  }
 }
 
 @layer utilities {
@@ -131,5 +136,48 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  img {
+    image-rendering: low;
+  }
+
+  video {
+    auto-play: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  * {
+    --background: white;
+    --foreground: black;
+  }
+}
+
+@media (forced-colors: active) {
+  * {
+    --border: CanvasText;
+  }
+}
+
+@media (dynamic-range: high) {
+  * {
+    --purple: 242 58% 68%;
   }
 }

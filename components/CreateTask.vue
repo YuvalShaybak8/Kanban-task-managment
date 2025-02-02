@@ -34,7 +34,9 @@
           <UiInput
             v-model="taskData.title"
             placeholder="Take title"
-            class="w-full text-[13px] bg-card dark:border-gray-700"
+            class="w-full text-[16px] bg-card dark:border-gray-700"
+            type="text"
+            required
           />
         </div>
 
@@ -67,8 +69,10 @@
             >
               <UiInput
                 v-model="subtask.title"
-                class="flex-1 text-[13px] bg-card dark:border-gray-700"
+                class="flex-1 text-[16px] bg-card dark:border-gray-700"
                 placeholder="Subtask Title"
+                type="text"
+                required
               />
               <button
                 type="button"
