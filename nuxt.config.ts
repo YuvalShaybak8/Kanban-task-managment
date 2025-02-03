@@ -38,6 +38,16 @@ export default defineNuxtConfig({
           content: "A powerful Kanban board for managing tasks and projects",
         },
         { property: "og:image", content: "/assets/og-image.jpg" },
+        {
+          name: "theme-color",
+          content: "hsl(220, 69%, 97%)",
+          media: "(prefers-color-scheme: light)",
+        },
+        {
+          name: "theme-color",
+          content: "hsl(235, 17%, 15%)",
+          media: "(prefers-color-scheme: dark)",
+        },
       ],
       link: [
         {
@@ -72,6 +82,24 @@ export default defineNuxtConfig({
   experimental: {
     componentIslands: true,
   },
+
+  typescript: {
+    typeCheck: false,
+    strict: false,
+  },
+
+  nitro: {
+    logLevel: 0,
+  },
+
+  vite: {
+    logLevel: "error",
+    optimizeDeps: {
+      exclude: ["#app-manifest"],
+    },
+  },
+
+  ignore: ["**/.DS_Store", "components/ui/**/*.vue/index"],
 
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
