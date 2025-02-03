@@ -6,7 +6,7 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="public/project1.jpeg" alt="Project Screenshot" width="400">
+  <img src="https://raw.githubusercontent.com/YuvalShaybak87/Kanban-task-managment/public/project1.jpeg alt="Project Screenshot" width="400">
   <img src="public/project2.jpeg" alt="Project Screenshot" width="400">
   <img src="public/project3.jpeg" alt="Project Screenshot" width="400">
   <img src="public/project4.jpeg" alt="Project Screenshot" width="400">
