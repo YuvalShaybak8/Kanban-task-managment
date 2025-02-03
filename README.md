@@ -5,10 +5,12 @@
 
 ## 📸 Screenshots
 
-![Screenshot 1](./assets/images/project1.jpeg)
-![Screenshot 2](./assets/images/project2.jpeg)
-![Screenshot 3](./assets/images/project3.jpeg)
-![Screenshot 4](./assets/images/project4.jpeg)
+<div align="center">
+  <img src="public/project1.jpeg" alt="Project Screenshot" width="400">
+  <img src="public/project2.jpeg" alt="Project Screenshot" width="400">
+  <img src="public/project3.jpeg" alt="Project Screenshot" width="400">
+  <img src="public/project4.jpeg" alt="Project Screenshot" width="400">
+</div>
 
 ## ✨ Features
 
