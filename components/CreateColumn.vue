@@ -26,7 +26,7 @@
             id="name"
             v-model="columnData.name"
             placeholder="e.g. Todo"
-            class="w-full"
+            class="w-full bg-background text-[14px]"
             type="text"
             required
           />
@@ -38,7 +38,7 @@
             <UiSelectTrigger class="w-full">
               <UiSelectValue placeholder="Select a Label" />
             </UiSelectTrigger>
-            <UiSelectContent class="bg-white">
+            <UiSelectContent class="bg-background">
               <div class="max-h-[300px] overflow-y-auto">
                 <UiSelectItem
                   v-for="color in columnColors"

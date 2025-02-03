@@ -15,7 +15,7 @@
       <span class="hidden lg:inline"> Add New Task </span>
     </UiDialogTrigger>
     <UiDialogContent
-      class="sm:max-w-[480px] max-w-[95vw] mx-auto rounded bg-card"
+      class="sm:max-w-[480px] sm:max-h-[80vh] rounded bg-card overflow-y-auto h-full"
     >
       <UiDialogHeader>
         <UiDialogTitle class="text-xl font-bold">Add New Task</UiDialogTitle>
@@ -34,7 +34,7 @@
           <UiInput
             v-model="taskData.title"
             placeholder="Take title"
-            class="w-full text-[16px] bg-card dark:border-gray-700"
+            class="w-full text-[13px] bg-card dark:border-gray-700"
             type="text"
             required
           />
@@ -69,7 +69,7 @@
             >
               <UiInput
                 v-model="subtask.title"
-                class="flex-1 text-[16px] bg-card dark:border-gray-700"
+                class="flex-1 text-[14px] bg-card dark:border-gray-700"
                 placeholder="Subtask Title"
                 type="text"
                 required
@@ -115,7 +115,7 @@
                 <span v-else>{{ placeholderText }}</span>
               </UiSelectValue>
             </UiSelectTrigger>
-            <UiSelectContent class="bg-white">
+            <UiSelectContent class="bg-card">
               <UiSelectItem
                 v-for="column in currentBoard?.columns"
                 :key="column.name"

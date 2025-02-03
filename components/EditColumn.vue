@@ -23,7 +23,7 @@
           <UiInput
             v-model="columnData.name"
             placeholder="Column Name"
-            class="w-full text-[16px] bg-card dark:border-gray-700"
+            class="w-full text-[14px] bg-card dark:border-gray-700"
             type="text"
             required
           />

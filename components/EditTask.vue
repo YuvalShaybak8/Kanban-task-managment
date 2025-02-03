@@ -18,7 +18,7 @@
           <UiInput
             v-model="taskData.title"
             placeholder="Task title"
-            class="w-full text-[16px] bg-card dark:border-gray-700"
+            class="w-full text-[14px] bg-card dark:border-gray-700"
             type="text"
             required
           />
@@ -47,7 +47,7 @@
             >
               <UiInput
                 v-model="subtask.title"
-                class="flex-1 text-[16px] bg-card dark:border-gray-700"
+                class="flex-1 text-[14px] bg-card dark:border-gray-700"
                 placeholder="Subtask Title"
                 type="text"
                 required

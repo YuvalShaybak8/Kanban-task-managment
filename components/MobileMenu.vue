@@ -8,7 +8,7 @@
           <UiDropdownMenuTrigger class="flex items-center gap-2 h-[80px] group">
             <h1 class="text-xl font-bold">{{ currentBoard?.name }}</h1>
             <div class="flex items-center">
-              <ChevronUp
+              <ChevronDown
                 class="text-purple transform origin-center transition-transform duration-200 group-data-[state=open]:rotate-180"
               />
             </div>
@@ -23,7 +23,7 @@
                 :key="board.id"
                 @click="setActiveBoard(board.id)"
                 :class="[
-                  'w-11/12 flex items-center py-3 rounded-r-full font-medium text-[16px] transition-colors cursor-pointer',
+                  'w-11/12 flex items-center py-3 rounded-r-full font-medium text-[14px] transition-colors cursor-pointer',
                   board.id === activeBoardId
                     ? 'bg-purple text-white'
                     : 'text-gray hover:bg-background dark:hover:bg-purple/10 hover:text-purple',
@@ -90,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import ChevronUp from "./Icons/ChevronUp.vue";
+import ChevronDown from "./Icons/ChevronDown.vue";
 import VerticalEllipsis from "./Icons/VerticalEllipsis.vue";
 import { useBoardStore } from "../stores/boardStore";
 import SwitchMode from "./SwitchMode.vue";
