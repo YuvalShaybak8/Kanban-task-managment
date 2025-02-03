@@ -5,12 +5,14 @@
 
 ## 📸 Screenshots
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/YuvalShaybak87/Kanban-task-managment/public/project1.jpeg alt="Project Screenshot" width="400">
-  <img src="public/project2.jpeg" alt="Project Screenshot" width="400">
-  <img src="public/project3.jpeg" alt="Project Screenshot" width="400">
-  <img src="public/project4.jpeg" alt="Project Screenshot" width="400">
-</div>
+
+![1](https://github.com/user-attachments/assets/8dda1473-095b-4179-96ab-ce89d23879d8)
+
+![2](https://github.com/user-attachments/assets/ea538391-005d-41f4-b3cc-cef590ea9afb)
+
+![3](https://github.com/user-attachments/assets/a02ecd89-bd3d-47ff-a7eb-453f506d264a)
+
+![4](https://github.com/user-attachments/assets/648c08fc-4a24-4b81-a163-258d9435a9d7)
 
 ## ✨ Features
 
