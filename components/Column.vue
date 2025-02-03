@@ -141,10 +141,12 @@ const handleChange = (evt: any, columnName: string) => {
   if (evt.added) {
     const { element: task } = evt.added;
     boardStore.updateTaskStatus(task.id, columnName);
+    task.status = columnName;
   }
   if (evt.moved) {
     const { element: task } = evt.moved;
     boardStore.updateTaskStatus(task.id, columnName);
+    task.status = columnName;
   }
 };
 
