@@ -6,10 +6,10 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="assets/project1.jpeg" alt="Project Screenshot" width="400">
-  <img src="assets/project2.jpeg" alt="Project Screenshot" width="400">
-  <img src="assets/project3.jpeg" alt="Project Screenshot" width="400">
-  <img src="assets/project4.jpeg" alt="Project Screenshot" width="400">
+  <img src="./assets/project1.jpeg" alt="Project Screenshot" width="400">
+  <img src="./assets/project2.jpeg" alt="Project Screenshot" width="400">
+  <img src="./assets/project3.jpeg" alt="Project Screenshot" width="400">
+  <img src="./assets/project4.jpeg" alt="Project Screenshot" width="400">
 </div>
 
 ## ✨ Features
