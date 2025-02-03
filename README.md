@@ -19,7 +19,7 @@
 - 📱 Responsive design for mobile and desktop
 - 🌓 Light/Dark mode toggle
 - 🔄 Drag and drop tasks between columns
-- 💾 Local storage persistence
+- 💾 Local storage pinia persistence
 - ✨ Modern and clean UI
 - ♿ Accessibility features
 
@@ -108,3 +108,13 @@ Local storage persistence
 State management with Pinia
 Type-safe with TypeScript
 ```
+## Setup
+
+Make sure to install dependencies:
+
+```bash
+# npm
+npm install
+
+# pnpm
+pnpm install
