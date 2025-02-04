@@ -88,10 +88,6 @@ export default defineNuxtConfig({
     strict: false,
   },
 
-  nitro: {
-    logLevel: 0,
-  },
-
   vite: {
     logLevel: "error",
     optimizeDeps: {
@@ -103,4 +99,14 @@ export default defineNuxtConfig({
 
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
+
+  nitro: {
+    output: {
+      dir: "dist",
+      publicDir: "dist/public",
+    },
+  },
+  generate: {
+    dir: "dist",
+  },
 });
